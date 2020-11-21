@@ -45,3 +45,28 @@ jobs:
             --image "gcr.io/$PROJECT_ID/$SERVICE_NAME" \
             --platform "managed"
   
+  e2e_test_job:
+    name: E2E Test
+    needs: build_deploy
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Runs a single command using the runners shell
+    - uses: actions/checkout@v2
+      with:
+        submodules: true    
+    - uses: cypress-io/github-action@v2
+      with:
+        working-directory: ./
+        browser: chrome
+        env: base_url=${{ secrets.BASE_URL }}
+    - uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: Cypress Screenshots
+        path: tests/e2e/screenshots
+    - uses: actions/upload-artifact@v1
+      if: always()
+      with:
+        name: Cypress Videos
+        path: tests/e2e/videos
