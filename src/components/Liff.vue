@@ -11,6 +11,9 @@
       <button type="button" class="btn btn-danger" @click="clear">
         全消去
       </button>
+      <button type="button" class="btn btn-danger" @click="undo">
+        戻す
+      </button>
     </div>
     <div id="btns">
       <button type="button" class="btn btn-primary" @click="share">
@@ -126,6 +129,13 @@ export default Vue.extend({
     },
     async clear() {
       this.signaturePad.clear();
+    },
+    async undo() {
+      var data = this.signaturePad.toData();
+      if (data) {
+        data.pop(); // remove the last dot or line
+        this.signaturePad.fromData(data);
+      }
     },
     async share() {
       const imageUrl = await this.saveImage();
