@@ -8,7 +8,7 @@
       <canvas ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
     </div>
     <div id="btns">
-      <button type="button" class="btn btn-danger" @click="initializeSignaturePad">
+      <button type="button" class="btn btn-danger" @click="clear">
         Clear
       </button>
     </div>
