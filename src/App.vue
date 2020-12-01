@@ -53,4 +53,9 @@ html, body {
 .btn.btn-info {
   background-color: #2ecc71;
 }
+.btn.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
 </style>

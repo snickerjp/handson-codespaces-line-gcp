@@ -8,6 +8,11 @@
       <canvas ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
     </div>
     <div id="btns">
+      <button type="button" class="btn btn-danger" @click="clear">
+        Clear
+      </button>
+    </div>
+    <div id="btns">
       <button type="button" class="btn btn-primary" @click="share">
         Share
       </button>
@@ -118,6 +123,9 @@ export default Vue.extend({
         alert(err);
         throw err;
       }
+    },
+    async clear() {
+      this.signaturePad.clear();
     },
     async share() {
       const imageUrl = await this.saveImage();
