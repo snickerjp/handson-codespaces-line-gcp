@@ -9,15 +9,15 @@
     </div>
     <div id="btns">
       <button type="button" class="btn btn-danger" @click="clear">
-        Clear
+        全消去
       </button>
     </div>
     <div id="btns">
       <button type="button" class="btn btn-primary" @click="share">
-        Share
+        共有
       </button>
       <button id="btnSend" type="button" class="btn btn-info" @click="send">
-        Send
+        送る
       </button>
     </div>
   </div>
@@ -169,7 +169,7 @@ export default Vue.extend({
         return;
       }
       const imageUrl = await this.saveImage();
-      
+
       try {
         await this.sendMessages(imageUrl, this.displayName);
       } catch (err) {
